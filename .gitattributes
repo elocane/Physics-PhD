@@ -1,1 +1,2 @@
 *.nb    filter=dropoutput_nb
+*.nb linguist-language=Mathematica
