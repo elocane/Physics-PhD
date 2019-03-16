@@ -1,0 +1,1076 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     40773,       1067]
+NotebookOptionsPosition[     38988,       1000]
+NotebookOutlinePosition[     39321,       1015]
+CellTagsIndexPosition[     39278,       1012]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trans", "[", 
+   RowBox[{
+   "\[CurlyPhi]1_", ",", "\[Theta]_", ",", "\[CurlyPhi]2_", ",", "v_"}], 
+   "]"}], "=", 
+  RowBox[{
+   RowBox[{"RotationTransform", "[", 
+    RowBox[{"\[CurlyPhi]2", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}], "@", 
+   RowBox[{
+    RowBox[{"RotationTransform", "[", 
+     RowBox[{"\[Theta]", ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "]"}], "@", 
+    RowBox[{
+     RowBox[{"RotationTransform", "[", 
+      RowBox[{"\[CurlyPhi]1", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}], "@", 
+     "v"}]}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TransformationFunction", "[", 
+   RowBox[{"(", 
+    TagBox[GridBox[{
+       {
+        RowBox[{"Cos", "[", "\[CurlyPhi]2", "]"}], 
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", "\[CurlyPhi]2", "]"}]}], "0", "0"},
+       {
+        RowBox[{"Sin", "[", "\[CurlyPhi]2", "]"}], 
+        RowBox[{"Cos", "[", "\[CurlyPhi]2", "]"}], "0", "0"},
+       {"0", "0", "1", "0"},
+       {"0", "0", "0", "1"}
+      },
+      AutoDelete->False,
+      GridBoxDividers->{
+       "Columns" -> {{False}}, "ColumnsIndexed" -> {-2 -> True}, 
+        "Rows" -> {{False}}, "RowsIndexed" -> {-2 -> True}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     #& ], ")"}], "]"}], "[", 
+  RowBox[{
+   RowBox[{"TransformationFunction", "[", 
+    RowBox[{"(", 
+     TagBox[GridBox[{
+        {
+         RowBox[{"Cos", "[", "\[Theta]", "]"}], "0", 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], "0"},
+        {"0", "1", "0", "0"},
+        {
+         RowBox[{"-", 
+          RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "0", 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}], "0"},
+        {"0", "0", "0", "1"}
+       },
+       AutoDelete->False,
+       GridBoxDividers->{
+        "Columns" -> {{False}}, "ColumnsIndexed" -> {-2 -> True}, 
+         "Rows" -> {{False}}, "RowsIndexed" -> {-2 -> True}},
+       GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+      #& ], ")"}], "]"}], "[", 
+   RowBox[{
+    RowBox[{"TransformationFunction", "[", 
+     RowBox[{"(", 
+      TagBox[GridBox[{
+         {
+          RowBox[{"Cos", "[", "\[CurlyPhi]1", "]"}], 
+          RowBox[{"-", 
+           RowBox[{"Sin", "[", "\[CurlyPhi]1", "]"}]}], "0", "0"},
+         {
+          RowBox[{"Sin", "[", "\[CurlyPhi]1", "]"}], 
+          RowBox[{"Cos", "[", "\[CurlyPhi]1", "]"}], "0", "0"},
+         {"0", "0", "1", "0"},
+         {"0", "0", "0", "1"}
+        },
+        AutoDelete->False,
+        GridBoxDividers->{
+         "Columns" -> {{False}}, "ColumnsIndexed" -> {-2 -> True}, 
+          "Rows" -> {{False}}, "RowsIndexed" -> {-2 -> True}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       #& ], ")"}], "]"}], "[", "v", "]"}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{3.6563397747678375`*^9, 3.656339822773837*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Grid", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"\"\<magnetic field and ion in frame of surface\>\"", ",", 
+         RowBox[{"Graphics3D", "[", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"Line", "[", 
+               RowBox[{"trans", "[", 
+                RowBox[{"0", ",", "\[Theta]1", ",", "0", ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], 
+                "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Polygon", "[", 
+              RowBox[{"trans", "[", 
+               RowBox[{
+               "\[CurlyPhi]2", ",", "\[Theta]2", ",", "\[CurlyPhi]3", ",", 
+                RowBox[{"0.5", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "1"}], "/", "2"}], ",", 
+                    RowBox[{
+                    RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}], ",", "0"}], 
+                    "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "1"}], "/", "2"}], ",", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    RowBox[{"Sqrt", "[", "3", "]"}]}], "/", "2"}], ",", "0"}],
+                     "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}]}]}], 
+               "]"}], "]"}], ",", "\[IndentingNewLine]", "Dashed", ",", 
+             RowBox[{"Line", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0", ",", 
+                  RowBox[{"-", "1"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}]}], 
+            "\[IndentingNewLine]", "}"}], ",", 
+           RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}], ",", 
+           RowBox[{"AxesLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<z\>\""}], 
+             "}"}]}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", 
+            RowBox[{"{", "400", "}"}]}]}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"\"\<magnetic field in frame of the ion\>\"", ",", 
+         RowBox[{"Graphics3D", "[", 
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"Line", "[", 
+               RowBox[{"trans", "[", 
+                RowBox[{
+                 RowBox[{"-", "\[CurlyPhi]3"}], ",", 
+                 RowBox[{"-", "\[Theta]2"}], ",", 
+                 RowBox[{"-", "\[CurlyPhi]2"}], ",", 
+                 RowBox[{"trans", "[", 
+                  RowBox[{"0", ",", "\[Theta]1", ",", "0", ",", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], 
+                  "]"}]}], "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Polygon", "[", 
+              RowBox[{"0.5", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"-", "1"}], "/", "2"}], ",", 
+                   RowBox[{
+                    RowBox[{"Sqrt", "[", "3", "]"}], "/", "2"}], ",", "0"}], 
+                  "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"-", "1"}], "/", "2"}], ",", 
+                   RowBox[{
+                    RowBox[{"-", 
+                    RowBox[{"Sqrt", "[", "3", "]"}]}], "/", "2"}], ",", "0"}],
+                   "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}]}], "]"}], 
+             ",", "\[IndentingNewLine]", "Blue", ",", 
+             RowBox[{"Line", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"trans", "[", 
+                 RowBox[{
+                  RowBox[{"-", "#"}], ",", 
+                  RowBox[{"-", "\[Theta]2"}], ",", 
+                  RowBox[{"-", "\[CurlyPhi]2"}], ",", 
+                  RowBox[{"trans", "[", 
+                   RowBox[{"0", ",", "\[Theta]1", ",", "0", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}]}], 
+                 "]"}], "&"}], "/@", 
+               RowBox[{"N", "[", 
+                RowBox[{"Range", "[", 
+                 RowBox[{"0", ",", 
+                  RowBox[{"2", "\[Pi]"}], ",", 
+                  RowBox[{"2", 
+                   RowBox[{"\[Pi]", "/", "50"}]}]}], "]"}], "]"}]}], "]"}], 
+             ",", "\[IndentingNewLine]", "Dashed", ",", "Black", ",", 
+             RowBox[{"Line", "[", 
+              RowBox[{"trans", "[", 
+               RowBox[{
+                RowBox[{"-", "\[CurlyPhi]3"}], ",", 
+                RowBox[{"-", "\[Theta]2"}], ",", 
+                RowBox[{"-", "\[CurlyPhi]2"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", 
+                    RowBox[{"-", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}], "]"}],
+               "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+           RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}], ",", 
+           RowBox[{"AxesLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<z\>\""}], 
+             "}"}]}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", 
+            RowBox[{"{", "400", "}"}]}]}], "]"}]}], "}"}]}], "}"}], 
+     "\[Transpose]"}], "]"}], "\[IndentingNewLine]", ",", 
+   "\"\<Incidence angle with respect to surface normal\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]1", ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
+   "\"\<Tilting of molecular plane\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]2", ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
+   "\"\<In plane rotation of molecule\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[CurlyPhi]2", ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
+   "\"\<Rotation of molecule around surface normal\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"\[CurlyPhi]3", ",", "0", ",", 
+     RowBox[{"2", "\[Pi]"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
+   "\"\<Arrow: magnetic field and k vector of light\\nDashed line: surface \
+normal\\nTriangle: molecule\\nBlue circle: average over \[CurlyPhi]3\>\"", 
+   ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Right"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.656337656940151*^9, 3.656337693582815*^9}, {
+   3.656337786780134*^9, 3.6563378226437197`*^9}, {3.656337861078563*^9, 
+   3.6563378671101665`*^9}, {3.656337946466101*^9, 3.656338019481402*^9}, 
+   3.656338061656619*^9, {3.656338160346487*^9, 3.6563381788423367`*^9}, {
+   3.6563382417956314`*^9, 3.6563383214145923`*^9}, {3.656338383545805*^9, 
+   3.6563384136348133`*^9}, {3.656338457685218*^9, 3.656338494397889*^9}, {
+   3.6563385338948383`*^9, 3.6563386127057185`*^9}, 3.656338656492097*^9, {
+   3.656338699238371*^9, 3.656338742511698*^9}, {3.656338928976342*^9, 
+   3.656339075735653*^9}, {3.656339109980228*^9, 3.6563392037958455`*^9}, {
+   3.6563392402152033`*^9, 3.6563393665208373`*^9}, {3.6563393968078375`*^9, 
+   3.6563394464608374`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Theta]1$$ = 0., $CellContext`\[Theta]2$$ =
+     0.5403539364174444, $CellContext`\[CurlyPhi]2$$ = 
+    0., $CellContext`\[CurlyPhi]3$$ = 0., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold["Incidence angle with respect to surface normal"], 
+      Manipulate`Dump`ThisIsNotAControl}, {
+      Hold[$CellContext`\[Theta]1$$], 0, 2 Pi}, {
+      Hold["Tilting of molecular plane"], Manipulate`Dump`ThisIsNotAControl}, {
+      Hold[$CellContext`\[Theta]2$$], 0, 2 Pi}, {
+      Hold["In plane rotation of molecule"], 
+      Manipulate`Dump`ThisIsNotAControl}, {
+      Hold[$CellContext`\[CurlyPhi]2$$], 0, 2 Pi}, {
+      Hold["Rotation of molecule around surface normal"], 
+      Manipulate`Dump`ThisIsNotAControl}, {
+      Hold[$CellContext`\[CurlyPhi]3$$], 0, 2 Pi}, {
+      Hold[
+      "Arrow: magnetic field and k vector of light\nDashed line: surface \
+normal\nTriangle: molecule\nBlue circle: average over \[CurlyPhi]3"], 
+      Manipulate`Dump`ThisIsNotAControl}}, Typeset`size$$ = {
+    747., {205., 212.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`\[Theta]1$561$$ = 
+    0, $CellContext`\[Theta]2$566$$ = 0, $CellContext`\[CurlyPhi]2$567$$ = 
+    0, $CellContext`\[CurlyPhi]3$568$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Theta]1$$ = 0, $CellContext`\[Theta]2$$ = 
+        0, $CellContext`\[CurlyPhi]2$$ = 0, $CellContext`\[CurlyPhi]3$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`\[Theta]1$$, $CellContext`\[Theta]1$561$$, 0], 
+        Hold[$CellContext`\[Theta]2$$, $CellContext`\[Theta]2$566$$, 0], 
+        Hold[$CellContext`\[CurlyPhi]2$$, $CellContext`\[CurlyPhi]2$567$$, 0], 
+        Hold[$CellContext`\[CurlyPhi]3$$, $CellContext`\[CurlyPhi]3$568$$, 
+         0]}, "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Grid[
+        Transpose[{{"magnetic field and ion in frame of surface", 
+           Graphics3D[{
+             Arrow[
+              Line[
+               $CellContext`trans[
+               0, $CellContext`\[Theta]1$$, 0, {{0, 0, 0}, {0, 0, 1}}]]], 
+             Polygon[
+              $CellContext`trans[$CellContext`\[CurlyPhi]2$$, $CellContext`\
+\[Theta]2$$, $CellContext`\[CurlyPhi]3$$, 
+               0.5 {{1, 0, 
+                 0}, {(-1)/2, Sqrt[3]/2, 0}, {(-1)/2, (-Sqrt[3])/2, 0}, {1, 0,
+                  0}}]], Dashed, 
+             Line[{{0, 0, -1}, {0, 0, 1}}]}, Axes -> True, 
+            PlotRange -> {{-1, 1}, {-1, 1}, {-1, 1}}, 
+            AxesLabel -> {"x", "y", "z"}, ImageSize -> {400}]}, {
+          "magnetic field in frame of the ion", 
+           Graphics3D[{
+             Arrow[
+              Line[
+               $CellContext`trans[-$CellContext`\[CurlyPhi]3$$, \
+-$CellContext`\[Theta]2$$, -$CellContext`\[CurlyPhi]2$$, 
+                $CellContext`trans[
+                0, $CellContext`\[Theta]1$$, 0, {{0, 0, 0}, {0, 0, 1}}]]]], 
+             Polygon[
+             0.5 {{1, 0, 
+                0}, {(-1)/2, Sqrt[3]/2, 0}, {(-1)/2, (-Sqrt[3])/2, 0}, {1, 0, 
+                0}}], Blue, 
+             Line[
+              
+              Map[$CellContext`trans[-#, -$CellContext`\[Theta]2$$, \
+-$CellContext`\[CurlyPhi]2$$, 
+                $CellContext`trans[
+                0, $CellContext`\[Theta]1$$, 0, {0, 0, 1}]]& , 
+               N[
+                Range[0, 2 Pi, 2 (Pi/50)]]]], Dashed, Black, 
+             Line[
+              $CellContext`trans[-$CellContext`\[CurlyPhi]3$$, -$CellContext`\
+\[Theta]2$$, -$CellContext`\[CurlyPhi]2$$, {{0, 0, -1}, {0, 0, 1}}]]}, Axes -> 
+            True, PlotRange -> {{-1, 1}, {-1, 1}, {-1, 1}}, 
+            AxesLabel -> {"x", "y", "z"}, ImageSize -> {400}]}}]], 
+      "Specifications" :> {
+       "Incidence angle with respect to surface normal", {$CellContext`\
+\[Theta]1$$, 0, 2 Pi, Appearance -> "Open"}, 
+        "Tilting of molecular plane", {$CellContext`\[Theta]2$$, 0, 2 Pi, 
+         Appearance -> "Open"}, 
+        "In plane rotation of molecule", {$CellContext`\[CurlyPhi]2$$, 0, 2 
+         Pi, Appearance -> "Open"}, 
+        "Rotation of molecule around surface normal", {$CellContext`\
+\[CurlyPhi]3$$, 0, 2 Pi, Appearance -> "Open"}, 
+        "Arrow: magnetic field and k vector of light\nDashed line: surface \
+normal\nTriangle: molecule\nBlue circle: average over \[CurlyPhi]3"}, 
+      "Options" :> {ControlPlacement -> Right}, "DefaultOptions" :> {}],
+     ImageSizeCache->{1026., {236., 243.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`trans[0, 0, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$34, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$215, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$253, {0, 0, 1}][#]]]& , $CellContext`trans[
+        0, 0., 0] = RotationTransform[FE`\[CurlyPhi]2$$225, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$225, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$225, {0, 0, 1}][#]]]& , $CellContext`trans[
+        0, 0.32672563597333854`, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$34, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$220, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$253, {0, 0, 1}][#]]]& , $CellContext`trans[
+        3.5814156250923643`, 0, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$34, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$215, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$15, {0, 0, 1}][#]]]& , $CellContext`trans[
+        3.5814156250923643`, 0.32672563597333854`, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$34, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$220, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$15, {0, 0, 1}][#]]]& , $CellContext`trans[
+        5.389968068364872, 0, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$46, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$215, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$46, {0, 0, 1}][#]]]& , $CellContext`trans[
+        5.389968068364872, 0.32672563597333854`, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$46, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$220, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$46, {0, 0, 1}][#]]]& , $CellContext`trans[
+        Pi/2, 0, 0] = RotationTransform[FE`\[CurlyPhi]2$$34, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$215, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$34, {0, 0, 1}][#]]]& , $CellContext`trans[
+        Pi/2, 0.32672563597333854`, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$34, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$220, {0, 1, 0}][
+          RotationTransform[
+          FE`\[CurlyPhi]1$$34, {0, 0, 
+           1}][#]]]& , $CellContext`trans[$CellContext`\[CurlyPhi]1, 0, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$198, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$215, {0, 1, 0}][
+          
+          RotationTransform[$CellContext`\[CurlyPhi]1, {0, 0, 
+           1}][#]]]& , $CellContext`trans[$CellContext`\[CurlyPhi]1, 
+         0.32672563597333854`, 0] = 
+       RotationTransform[FE`\[CurlyPhi]2$$198, {0, 0, 1}][
+         RotationTransform[FE`\[Theta]$$220, {0, 1, 0}][
+          
+          RotationTransform[$CellContext`\[CurlyPhi]1, {0, 0, 
+           1}][#]]]& , $CellContext`trans[
+         Pattern[$CellContext`\[CurlyPhi]1, 
+          Blank[]], 
+         Pattern[$CellContext`\[Theta], 
+          Blank[]], 
+         Pattern[$CellContext`\[CurlyPhi]2, 
+          Blank[]], 
+         Pattern[$CellContext`v, 
+          Blank[]]] = TransformationFunction[{{
+           Cos[$CellContext`\[CurlyPhi]2], -Sin[$CellContext`\[CurlyPhi]2], 0,
+            0}, {
+           Sin[$CellContext`\[CurlyPhi]2], 
+           Cos[$CellContext`\[CurlyPhi]2], 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}}][
+         TransformationFunction[{{
+            Cos[$CellContext`\[Theta]], 0, 
+            Sin[$CellContext`\[Theta]], 0}, {0, 1, 0, 
+           0}, {-Sin[$CellContext`\[Theta]], 0, 
+            Cos[$CellContext`\[Theta]], 0}, {0, 0, 0, 1}}][
+          TransformationFunction[{{
+             Cos[$CellContext`\[CurlyPhi]1], -Sin[$CellContext`\[CurlyPhi]1], 
+             0, 0}, {
+             Sin[$CellContext`\[CurlyPhi]1], 
+             Cos[$CellContext`\[CurlyPhi]1], 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 
+            1}}][$CellContext`v]]], $CellContext`trans[
+         Pattern[$CellContext`\[CurlyPhi]1, 
+          Blank[]], 
+         Pattern[$CellContext`\[Theta], 
+          Blank[]], 
+         Pattern[$CellContext`\[CurlyPhi]2, 
+          Blank[]]] = RotationTransform[$CellContext`\[CurlyPhi]2, {0, 0, 1}][
+         RotationTransform[$CellContext`\[Theta], {0, 1, 0}][
+          RotationTransform[$CellContext`\[CurlyPhi]1, {0, 0, 1}][#]]]& , 
+       FE`\[CurlyPhi]2$$34 = 0, FE`\[Theta]$$215 = 4.354351584758337, 
+       FE`\[CurlyPhi]1$$253 = 0, FE`\[CurlyPhi]2$$225 = 0, FE`\[Theta]$$225 = 
+       0., FE`\[CurlyPhi]1$$225 = 0, FE`\[Theta]$$220 = 0.32672563597333854`, 
+       FE`\[CurlyPhi]1$$15 = 0., FE`\[CurlyPhi]2$$46 = 0, FE`\[CurlyPhi]1$$46 = 
+       5.389968068364872, FE`\[CurlyPhi]1$$34 = Pi/2, FE`\[CurlyPhi]2$$198 = 
+       0}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.6563375539818563`*^9, 3.6563376984413013`*^9, {3.656337799647421*^9, 
+   3.656337823598816*^9}, {3.6563379909745517`*^9, 3.656338020344488*^9}, {
+   3.6563381634908013`*^9, 3.6563381809965515`*^9}, 3.656338262865738*^9, 
+   3.656338322839735*^9, 3.656338415817032*^9, 3.6563384634217916`*^9, 
+   3.6563385479592447`*^9, 3.6563386149689445`*^9, 3.656338743424789*^9, 
+   3.656338829625408*^9, 3.6563389332777724`*^9, {3.6563389739088354`*^9, 
+   3.6563390032647705`*^9}, 3.6563390772295036`*^9, {3.6563391909571295`*^9, 
+   3.656339197610464*^9}, 3.656339372667837*^9, {3.656339406070837*^9, 
+   3.656339448629837*^9}, 3.656339777582837*^9, 3.656339823227837*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "directions", " ", "for", " ", "average", " ", "over", " ", 
+    "\[CurlyPhi]3"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"trans", "[", 
+   RowBox[{
+    RowBox[{"-", "\[CurlyPhi]3"}], ",", 
+    RowBox[{"-", "\[Theta]2"}], ",", 
+    RowBox[{"-", "\[CurlyPhi]2"}], ",", 
+    RowBox[{"trans", "[", 
+     RowBox[{"0", ",", "\[Theta]1", ",", "0", ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6563388830387487`*^9, 3.6563388840058455`*^9}, {
+  3.6563395024418373`*^9, 3.656339547577837*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Cos", "[", "\[CurlyPhi]2", "]"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Theta]2", "]"}], " ", 
+        RowBox[{"Cos", "[", "\[CurlyPhi]3", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Theta]1", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Theta]1", "]"}], " ", 
+        RowBox[{"Sin", "[", "\[Theta]2", "]"}]}]}], ")"}]}], "-", 
+    RowBox[{
+     RowBox[{"Sin", "[", "\[Theta]1", "]"}], " ", 
+     RowBox[{"Sin", "[", "\[CurlyPhi]2", "]"}], " ", 
+     RowBox[{"Sin", "[", "\[CurlyPhi]3", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Cos", "[", "\[Theta]2", "]"}], " ", 
+         RowBox[{"Cos", "[", "\[CurlyPhi]3", "]"}], " ", 
+         RowBox[{"Sin", "[", "\[Theta]1", "]"}]}], "-", 
+        RowBox[{
+         RowBox[{"Cos", "[", "\[Theta]1", "]"}], " ", 
+         RowBox[{"Sin", "[", "\[Theta]2", "]"}]}]}], ")"}]}], " ", 
+     RowBox[{"Sin", "[", "\[CurlyPhi]2", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"Cos", "[", "\[CurlyPhi]2", "]"}], " ", 
+     RowBox[{"Sin", "[", "\[Theta]1", "]"}], " ", 
+     RowBox[{"Sin", "[", "\[CurlyPhi]3", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Cos", "[", "\[Theta]1", "]"}], " ", 
+     RowBox[{"Cos", "[", "\[Theta]2", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"Cos", "[", "\[CurlyPhi]3", "]"}], " ", 
+     RowBox[{"Sin", "[", "\[Theta]1", "]"}], " ", 
+     RowBox[{"Sin", "[", "\[Theta]2", "]"}]}]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6563397901128373`*^9, 3.656339823252837*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics3D", "[", 
+  RowBox[{"{", 
+   RowBox[{"Red", ",", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}], ",", "Blue",
+     ",", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+    "Green", ",", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+    "Yellow", ",", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          RowBox[{"Pi", "/", "4"}], "]"}], ",", "0", ",", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "4"}], "]"}]}], "}"}]}], "}"}], "]"}], ",", 
+    "Black", ",", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "4"}], "]"}], ",", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"Pi", "/", "4"}], "]"}], ",", "0"}], "}"}]}], "}"}], "]"}], 
+    ",", "Purple", ",", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Cos", "[", 
+           RowBox[{"Pi", "/", "4"}], "]"}], " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "4"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "4"}], "]"}], " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"Pi", "/", "4"}], "]"}]}], ",", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"Pi", "/", "4"}], "]"}]}], "}"}]}], "}"}], "]"}], ",", 
+    "Magenta", ",", 
+    RowBox[{"Arrow", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+        "0.3585786437626905`", ",", "0.6414213562373094`", ",", 
+         "0.7071067811865475`"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.657275306989501*^9, 3.6572753076487494`*^9}, {
+   3.657275337985944*^9, 3.657275487342067*^9}, {3.657275631488435*^9, 
+   3.657275700337646*^9}, {3.657277413319997*^9, 3.6572774413489313`*^9}, 
+   3.657277562015353*^9, {3.6572776886022377`*^9, 3.657277724812235*^9}, {
+   3.657278103949132*^9, 3.657278144438389*^9}, {3.6572783286973467`*^9, 
+   3.657278337986713*^9}, {3.657278713692646*^9, 3.657278722635902*^9}, {
+   3.657278783204915*^9, 3.6572787928858423`*^9}, {3.6573585140523767`*^9, 
+   3.6573585421780977`*^9}}],
+
+Cell[BoxData[
+ Graphics3DBox[{
+   {RGBColor[1, 0, 0], Arrow3DBox[{{0, 0, 0}, {1, 0, 0}}]}, 
+   {RGBColor[0, 0, 1], Arrow3DBox[{{0, 0, 0}, {0, 1, 0}}]}, 
+   {RGBColor[0, 1, 0], Arrow3DBox[{{0, 0, 0}, {0, 0, 1}}]}, 
+   {RGBColor[1, 1, 0], 
+    Arrow3DBox[
+     NCache[{{0, 0, 0}, {2^Rational[-1, 2], 0, 2^Rational[-1, 2]}}, {{0, 0, 
+       0}, {0.7071067811865475, 0, 0.7071067811865475}}]]}, 
+   {GrayLevel[0], 
+    Arrow3DBox[
+     NCache[{{0, 0, 0}, {2^Rational[-1, 2], 2^Rational[-1, 2], 0}}, {{0, 0, 
+       0}, {0.7071067811865475, 0.7071067811865475, 0}}]]}, 
+   {RGBColor[0.5, 0, 0.5], 
+    Arrow3DBox[
+     NCache[{{0, 0, 0}, {
+       Rational[1, 2], Rational[1, 2], 2^Rational[-1, 2]}}, {{0, 0, 0}, {0.5, 
+       0.5, 0.7071067811865475}}]]}, 
+   {RGBColor[1, 0, 1], 
+    Arrow3DBox[{{0, 0, 0}, {0.3585786437626905, 0.6414213562373094, 
+      0.7071067811865475}}]}},
+  ImageSize->{360., 390.69293666342895`},
+  ViewPoint->{3.2701889982539085`, 0.4247075657767591, 0.7586088578912793},
+  ViewVertical->{0.4108570361329302, 0.033475449283747294`, 
+   0.9110850070961083}]], "Output",
+ CellChangeTimes->{
+  3.657275505449154*^9, {3.6572756719854183`*^9, 3.6572757008413153`*^9}, 
+   3.6572774417917013`*^9, 3.657277562638487*^9, {3.657277689743168*^9, 
+   3.657277725155863*^9}, 3.6572781477232227`*^9, {3.657278331560808*^9, 
+   3.6572783387618513`*^9}, 3.657278723179185*^9, 3.657278795066421*^9, 
+   3.657358543534334*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Rx", "[", "thetaSurf_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", 
+      RowBox[{"Cos", "[", "thetaSurf", "]"}], ",", 
+      RowBox[{"-", 
+       RowBox[{"Sin", "[", "thetaSurf", "]"}]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", 
+      RowBox[{"Sin", "[", "thetaSurf", "]"}], ",", 
+      RowBox[{"Cos", "[", "thetaSurf", "]"}]}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6572755248215513`*^9, 3.657275580112352*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Rx", "[", "thetaSurf", "]"}], ".", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.657275583794511*^9, 3.657275613266889*^9}, {
+  3.6572776749639997`*^9, 3.657277678242688*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"-", 
+    RowBox[{"Sin", "[", "thetaSurf", "]"}]}], ",", 
+   RowBox[{"Cos", "[", "thetaSurf", "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6572756141386642`*^9, 3.65727767897227*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ry", "[", "thetaSurf_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Cos", "[", "thetaSurf", "]"}], ",", "0", ",", 
+      RowBox[{"Sin", "[", "thetaSurf", "]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Sin", "[", "thetaSurf", "]"}]}], ",", "0", ",", 
+      RowBox[{"Cos", "[", "thetaSurf", "]"}]}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.657278653156591*^9, 3.657278689723618*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ry", "[", "thetaSurf", "]"}], ".", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0", ",", "1"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.657278697092359*^9, 3.657278704747661*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Sin", "[", "thetaSurf", "]"}], ",", "0", ",", 
+   RowBox[{"Cos", "[", "thetaSurf", "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.657278705157961*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Rz", "[", "phiSurf_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Cos", "[", "phiSurf", "]"}], ",", 
+      RowBox[{"-", 
+       RowBox[{"Sin", "[", "phiSurf", "]"}]}], ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Sin", "[", "phiSurf", "]"}], ",", 
+      RowBox[{"Cos", "[", "phiSurf", "]"}], ",", "0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.657277307401197*^9, 3.6572773729621277`*^9}, {
+  3.657277550374642*^9, 3.657277553759516*^9}, {3.657277718122408*^9, 
+  3.65727772031496*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Rz", "[", "phiSurf", "]"}], ".", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "0", ",", "0"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.657277387653557*^9, 3.6572773983966217`*^9}, {
+  3.6572776974912233`*^9, 3.6572777002595673`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Cos", "[", "phiSurf", "]"}], ",", 
+   RowBox[{"Sin", "[", "phiSurf", "]"}], ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.657277398799911*^9, 3.657277556889595*^9, {3.6572777006952477`*^9, 
+   3.657277721983198*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Rz", "[", 
+   RowBox[{"Pi", "/", "4"}], "]"}], ".", 
+  RowBox[{"Ry", "[", 
+   RowBox[{"Pi", "/", "4"}], "]"}], ".", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0.2", ",", "1"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.657278071692134*^9, 3.657278094477351*^9}, 
+   3.6572787655640583`*^9, {3.657358487162964*^9, 3.657358501316248*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.3585786437626905`", ",", "0.6414213562373094`", ",", 
+   "0.7071067811865475`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6572780949796886`*^9, 3.6572787670965757`*^9, {3.657358489418425*^9, 
+   3.657358502121441*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Bvec", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"B", " ", 
+     RowBox[{"Sin", "[", "thetaB", "]"}], 
+     RowBox[{"Cos", "[", "phiB", "]"}]}], ",", 
+    RowBox[{"B", " ", 
+     RowBox[{"Sin", "[", "thetaB", "]"}], " ", 
+     RowBox[{"Sin", "[", "phiB", "]"}]}], ",", 
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "thetaB", "]"}]}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.6572795374407578`*^9, 3.65727959449695*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"B", " ", 
+    RowBox[{"Cos", "[", "phiB", "]"}], " ", 
+    RowBox[{"Sin", "[", "thetaB", "]"}]}], ",", 
+   RowBox[{"B", " ", 
+    RowBox[{"Sin", "[", "phiB", "]"}], " ", 
+    RowBox[{"Sin", "[", "thetaB", "]"}]}], ",", 
+   RowBox[{"B", " ", 
+    RowBox[{"Cos", "[", "thetaB", "]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6572795967551928`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Rz", "[", "phiSurf", "]"}], ".", 
+  RowBox[{"Ry", "[", "thetaSurf", "]"}], ".", "Bvec"}]], "Input",
+ CellChangeTimes->{{3.657279603550425*^9, 3.6572796239969807`*^9}, 
+   3.657279664521901*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "phiB", "]"}], " ", 
+     RowBox[{"Cos", "[", "phiSurf", "]"}], " ", 
+     RowBox[{"Cos", "[", "thetaSurf", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaB", "]"}]}], "-", 
+    RowBox[{"B", " ", 
+     RowBox[{"Sin", "[", "phiB", "]"}], " ", 
+     RowBox[{"Sin", "[", "phiSurf", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaB", "]"}]}], "+", 
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "phiSurf", "]"}], " ", 
+     RowBox[{"Cos", "[", "thetaB", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaSurf", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "phiSurf", "]"}], " ", 
+     RowBox[{"Sin", "[", "phiB", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaB", "]"}]}], "+", 
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "phiB", "]"}], " ", 
+     RowBox[{"Cos", "[", "thetaSurf", "]"}], " ", 
+     RowBox[{"Sin", "[", "phiSurf", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaB", "]"}]}], "+", 
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "thetaB", "]"}], " ", 
+     RowBox[{"Sin", "[", "phiSurf", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaSurf", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "thetaB", "]"}], " ", 
+     RowBox[{"Cos", "[", "thetaSurf", "]"}]}], "-", 
+    RowBox[{"B", " ", 
+     RowBox[{"Cos", "[", "phiB", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaB", "]"}], " ", 
+     RowBox[{"Sin", "[", "thetaSurf", "]"}]}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.657279617678603*^9, 3.657279624249555*^9}, 
+   3.657279664808076*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PDF", "[", 
+  RowBox[{
+   RowBox[{"NormalDistribution", "[", 
+    RowBox[{"\[Mu]", ",", "\[Sigma]"}], "]"}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.661854474858159*^9, 3.661854516639902*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{"-", 
+    FractionBox[
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"x", "-", "\[Mu]"}], ")"}], "2"], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["\[Sigma]", "2"]}]]}]], 
+  RowBox[{
+   SqrtBox[
+    RowBox[{"2", " ", "\[Pi]"}]], " ", "\[Sigma]"}]]], "Output",
+ CellChangeTimes->{{3.661854494731908*^9, 3.661854517722232*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"(", 
+  RowBox[{"1", "+", 
+   RowBox[{"0.997", "^", "2"}]}], ")"}]], "Input",
+ CellChangeTimes->{{3.662217155845742*^9, 3.662217162730257*^9}}],
+
+Cell[BoxData["1.9940090000000001`"], "Output",
+ CellChangeTimes->{3.662217164247027*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    RowBox[{"0.997", "^", "2"}]}], ")"}], "/", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"0.997", "^", "2"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.6622171783467712`*^9, 3.662217186978918*^9}}],
+
+Cell[BoxData["332.8340844600251`"], "Output",
+ CellChangeTimes->{3.6622171888356457`*^9}]
+}, Open  ]]
+},
+WindowSize->{1918, 1003},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 684, 21, 32, "Input"],
+Cell[1267, 45, 2311, 62, 81, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3615, 112, 9447, 214, 341, "Input"],
+Cell[13065, 328, 10721, 206, 496, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23823, 539, 626, 16, 55, "Input"],
+Cell[24452, 557, 1669, 44, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26158, 606, 3145, 89, 77, "Input"],
+Cell[29306, 697, 1431, 30, 406, "Output"]
+}, Open  ]],
+Cell[30752, 730, 587, 16, 32, "Input"],
+Cell[CellGroupData[{
+Cell[31364, 750, 260, 6, 32, "Input"],
+Cell[31627, 758, 246, 6, 32, "Output"]
+}, Open  ]],
+Cell[31888, 767, 585, 16, 32, "Input"],
+Cell[CellGroupData[{
+Cell[32498, 787, 209, 5, 32, "Input"],
+Cell[32710, 794, 203, 5, 32, "Output"]
+}, Open  ]],
+Cell[32928, 802, 674, 18, 32, "Input"],
+Cell[CellGroupData[{
+Cell[33627, 824, 262, 6, 32, "Input"],
+Cell[33892, 832, 276, 7, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34205, 844, 366, 9, 32, "Input"],
+Cell[34574, 855, 265, 7, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34876, 867, 452, 12, 32, "Input"],
+Cell[35331, 881, 400, 11, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35768, 897, 228, 5, 32, "Input"],
+Cell[35999, 904, 1601, 40, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37637, 949, 227, 5, 32, "Input"],
+Cell[37867, 956, 413, 13, 74, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38317, 974, 166, 4, 32, "Input"],
+Cell[38486, 980, 88, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38611, 986, 269, 8, 32, "Input"],
+Cell[38883, 996, 89, 1, 65, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
